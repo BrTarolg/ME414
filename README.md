@@ -175,7 +175,7 @@ Data types and formats, record cleaning, linkage, SQL, JSON, massive data proces
 ***
 
 #### __*Wednesday, August 17: Linear Regression [SM]*__ 
-The basic linear regression model, with a focus on prediction.
+Linear regression model and supervised learning.
 
 ##### Resources
 
