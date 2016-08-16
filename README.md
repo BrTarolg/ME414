@@ -153,7 +153,7 @@ We will use this session to get to know the range of interests and experience st
 
 ***
 
-#### __*Tuesday, August 16: Data structures and databases [KB, SM]*__  
+#### __*Tuesday, August 16: Data structures and databases [KB]*__  
 Data types and formats, record cleaning, linkage, SQL, JSON, massive data processing.
  
 ##### Resources
@@ -211,7 +211,7 @@ Logistic regression, discriminant analysis, Naive Bayes, evaluating model perfor
 
 ***
 
-#### __*Friday, August 19: Resampling methods, model selection and regularization [KB]*__
+#### __*Friday, August 19: Resampling methods, model selection and regularization [SM]*__
 Cross-validation, bootstrap, ridge and lasso.
 
 ##### Resources
