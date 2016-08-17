@@ -90,41 +90,44 @@ output: html_document
     
     b.  Filtering:  Select only the Fianna Fail candidates using `filter()`, and assign the filtered `data.frame` to `dail2002FF`.  Note that you might want to first find out what are the labels for party by using `summary()` on the `party` variable.
     
-        ```{r}
+```{r}
         require(dplyr)
         dail2002FF <- filter(dail2002, party=="ff")
         summary(dail2002FF$party)
-        ```
+```
+
         How many FF candidates were there in the 2002 election?  ** 106**
         
     
         
     c.  Summarizing FF candidates per constituency.  On the new data frame `dail2002FF`, summarize the median spending (`spend_total`) for FF candidates using the `dplyr` function `summarise`.  Use "pipes" for extra credit!
 
-        ```{r}
+```{r}
         FFspend <- select(dail2002FF, spend_total, constituency) %>%
-?select
-dailgroup <- group_by(dail2002FF, constituency)
-summarise(dailgroup, median(spend_total))
-
                       group_by(constituency) %>% 
                           summarise(medspend = median(spend_total))
                           
-                          
-        ```
+```
+
+```{r}
+dailgroup <- group_by(dail2002FF, constituency)
+summarise(dailgroup, median(spend_total))
+```
 
 
         Sort and plot the 42 median spending values using an index plot. 
-        ```{r}
-        plot(sort(FFspend$medspend), ylab="Median constituency spending for FF")
-        ```
+
+```{r}
+plot(sort(FFspend$medspend), ylab="Median constituency spending for FF")
+```
 
         For extra credit, do the same using `aggregate` instead of dplyr.
-        ```{r}
+
+```{r}
         FFspend2 <- aggregate(dail2002FF$spend_total, 
                               list(constituency=dail2002FF$constituency), 
                               median)
-        ```
+```
 
 
 
@@ -139,6 +142,7 @@ summarise(dailgroup, median(spend_total))
 
     ```{r}
     library(reshape2)
+    library(dplyr)
     # rename votes1st
     names(dail2002)[which(names(dail2002FF)=="votes1st")] <- "count1"
     dail2002melted <- melt(select(dail2002, wholename, district, count1, count2:count16, m), 
