@@ -1,0 +1,40 @@
+---
+title: "Common problems with lab 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Generally, yesterday's homework was excellent! Well done! Some small things:
+
+  1. Do you actually know what your code is doing?
+
+```{r}
+library(ISLR)
+Weekly <- Weekly
+train <-  (Weekly$Year < 2009)
+train.data <- Weekly[train,]
+test.data <- Weekly[!train,]
+
+glm.fit <-  glm(Direction ~ Lag2, data = train.data, family = binomial)
+glm.probs <-  predict(glm.fit, test.data, type="response")
+glm.pred <-  rep("Down", length(glm.probs))
+glm.pred[glm.probs>.5] <-  "Up"
+
+table(glm.pred, test.data$Direction)
+
+```
+
+  2. Subsetting, using the `object[]` syntax, can be done using numeric inputs **or** logical inputs
+  
+```{r, echo = F}
+letters <- letters[1:5]
+```
+
+```{r}
+print(letters)
+```
+
+Let's say that I would like subset the vector `letters` to just the first, third, and fifth elements. How would I do this?
