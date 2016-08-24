@@ -4,9 +4,6 @@ author: "Ken Benoit and Slava Mikhaylov"
 output: html_document
 ---
 
-Assignments for the course focus on practical aspects of the concepts covered in the lectures. Assignments are largely based on the material covered in James et al. (2013). You will start working on the assignment in the lab sessions after the lectures, but may need to finish them after class.
-
-You will be asked to submit your assignments via Moodle by 7pm on the day of the class. We will subsequently open up solutions to the problem sets. 
 
 ### Exercise summary
 
@@ -14,18 +11,18 @@ This exercise is designed to get you working with [quanteda](http://github.com/k
 
 1.  Getting Started.
 
-    You can use R or Rstudio for these exercises.  You will first need to install the package,   
+    You will first need to install the package,   
     using the commands below.  Also see the instructions for installation from the dev branch page of
     http://github.com/kbenoit/quanteda.
    
     ```{r, eval=FALSE}
+    install.packages("quanteda")
+    
     # needs the devtools package for this to work
     if (!require(devtools)) install.packages("devtools", dependencies=TRUE)
     # PREFERABLY: install the latest version from GitHub
     # see the installation instructions on http://github.com/kbenoit/quanteda
     devtools::install_github("kbenoit/quanteda")
-    # and quantedaData
-    devtools::install_github("quantedaData", username="kbenoit")
     ```
 1.  Exploring **quanteda** functions.
 
