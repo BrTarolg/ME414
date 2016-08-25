@@ -346,9 +346,9 @@ Working with the Twitter API, Facebook API, JSON data, and examples.
 
 ### Assessment
 
-#### __Exam: Friday, August 26, Time: TBA, Room: TBA__
+#### __Exam: Friday, August 26, Time: 14:00, Room: Clement House CLM.4.02__
 
-* __Instructions:__  Complete and submit the exam just as you would any lab assignment: by renaming the file, editing the R Markdown, and submitting through Moodle. 
-* __Formatting:__  Put your own textual answers in boldface (using `**boldface type**` in RMarkdown), so that we can easily identify them.
-* __Deadline:__ Monday 26 September 17:00 London time (GMT+1)
+* __Instructions:__  Complete and submit the exam just as you would any lab assignment: by renaming the file, editing the R Markdown, knitting, and submitting through Moodle your knitted HTML file. Moodle page for the course is linked [here:](https://shortcourses.lse.ac.uk/course/view.php?id=158).
+* __Formatting:__  Put your own textual answers in boldface (using `**boldface type**` in RMarkdown), so that we can easily identify them when reviewing your HTML file.
+* __Deadline:__ Monday 29 August 17:00 London time (GMT+1)
 
