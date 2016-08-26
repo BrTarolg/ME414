@@ -320,6 +320,7 @@ Working with the Twitter API, Facebook API, JSON data, and examples.
 ##### Resources
 
 * [Lecture Notes](day10/ME414_day10.pdf)
+* [General examples from the lecture](day10/day10examples_noKeys.R)
 * [Streaming example code](day10/streamRExample.R)
 * [Rest Example code](day10/restExample.R)
 * [Assignment 10 as R markdown](day10/ME414_assignment10_LASTNAME_FIRSTNAME.Rmd).  Note: This is a take-home set only, as there is no lab on Day 10.
