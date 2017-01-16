@@ -52,7 +52,7 @@ The following links provide a basic introduction to R:
 
 We strongly recommend you spend some of July and August before the course working through the following materials:
 
-* Garrett Grolemund and Hadley Wickham (2016) _R for Data Science_, O'Reilly Media, Chapters 1-3. Note: Online version is available from the authors' page [here](http://r4ds.had.co.nz/index.html).
+* Garrett Grolemund and Hadley Wickham (2016) _R for Data Science_, O'Reilly Media. Note: Online version is available from the authors' page [here](http://r4ds.had.co.nz/index.html).
 * James et al. (2013) _An Introduction to Statistical Learning: With applications in R_, Springer, Chapters 1--2. Note: The book is available from the authors' page [here](http://www-bcf.usc.edu/~gareth/ISL/).
 
 If you start preparing for the course (with the above materials) using your own laptop, it may be more convenient for you to continue using it during the summer school. 
