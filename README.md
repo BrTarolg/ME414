@@ -5,7 +5,7 @@
 
 [Kenneth Benoit](kbenoit@lse.ac.uk), Department of Methodology, LSE  
 [Slava Mikhaylov](s.mikhaylov@ucl.ac.uk), Institute for Analytics and Data Science, University of Essex  
-[Jack Blumenau](J.Blumenau@lse.ac.uk), Department of Methodology, LSE  
+[Jack Blumenau](J.Blumenau@lse.ac.uk), Department of Political Science, UCL  
 
 This repository contains the class materials for the [LSE Methods Summer Programme](http://www.lse.ac.uk/study/summerSchools/Methods/home.aspx) course [*ME414 Introduction to Data Science and Big Data Analytics*](http://www.lse.ac.uk/study/summerSchools/Methods/Quantitative/ME414.aspx) taught in August 2017 by Kenneth Benoit, Slava Mikhaylov, and Jack Blumenau.  
 
@@ -125,7 +125,7 @@ You can read more about using GitHub with RStudio in Hadley Wickham's _R Package
 
 **Slava Mikhaylov** is Professor of Public Policy and Data Science at Institute of Analytics and Data Science and Department of Government, University of Essex. He's a Chief Scientific Advisor to Essex County Council and a co-investigator in an ESRC Big Data infrastructure investment initiative – Consumer Data Research Centre at UCL. His research and teaching is primarily in the field of computational social science and data science. 
 
-**Dr. Jack Blumenau** is an ESRC Postdoctoral Fellow at LSE Methodology Department. Jack serve as the lab assistant for this course and deliver one of the sessions related to his research.
+**Dr. Jack Blumenau** is a Lecturer in Quantitative Methods at the UCL Department of Political Science. he was previously an ESRC "Future Research Leader" post-doc in the Methodology Department at the LSE. His research explores the effects of legislative leaders on the behaviour of parliamentarians in the European Parliament and the UK House of Commons.
 
 
 
@@ -133,7 +133,7 @@ You can read more about using GitHub with RStudio in Hadley Wickham's _R Package
 
 ***
 
-#### __*Monday, TBC: Overview and introduction to data science [KB, SM]*__
+#### __*Monday, 14 August: Overview and introduction to data science [KB, SM]*__
 We will use this session to get to know the range of interests and experience students bring to the class, as well as to survey the machine learning approaches to be covered. We will also discuss and demonstrate the R software.
 
 ##### Resources
@@ -161,7 +161,7 @@ We will use this session to get to know the range of interests and experience st
 
 ***
 
-#### __*Tuesday, TBC: Data structures and databases [KB]*__  
+#### __*Tuesday, 15 August: Data structures and databases [KB]*__  
 Data types and formats, record cleaning, linkage, SQL, JSON, massive data processing.
  
 ##### Resources
@@ -182,7 +182,7 @@ Data types and formats, record cleaning, linkage, SQL, JSON, massive data proces
 
 ***
 
-#### __*Wednesday, TBC: Linear Regression [SM]*__ 
+#### __*Wednesday, 16 August: Linear Regression [KB]*__ 
 Linear regression model and supervised learning.
 
 ##### Resources
@@ -200,7 +200,7 @@ Linear regression model and supervised learning.
 
 ***
 
-#### __*Thursday, TBC: Classification [SM]*__ 
+#### __*Thursday, 17 August: Classification [SM]*__ 
 Logistic regression, discriminant analysis, Naive Bayes, evaluating model performance.
 
 ##### Resources
@@ -219,7 +219,7 @@ Logistic regression, discriminant analysis, Naive Bayes, evaluating model perfor
 
 ***
 
-#### __*Friday, TBC: Resampling methods, model selection and regularization [SM]*__
+#### __*Friday, 18 August: Resampling methods, model selection and regularization [SM]*__
 Cross-validation, bootstrap, ridge and lasso.
 
 ##### Resources
@@ -236,7 +236,7 @@ Cross-validation, bootstrap, ridge and lasso.
 
 ***
 
-#### __*Monday, TBC: Non-linear models and tree-based methods [SM]*__
+#### __*Monday, 21 August: Non-linear models and tree-based methods [SM]*__
 GAMs, local regression, decision trees, random forest, boosting.
 
 ##### Resources
@@ -255,7 +255,7 @@ GAMs, local regression, decision trees, random forest, boosting.
 
 ***
 
-#### __*Tuesday, TBC: Unsupervised learning and dimensional reduction [KB]*__
+#### __*Tuesday, 22 August: Unsupervised learning and dimensional reduction [SM]*__
 Cluster analysis, PCA, correspondence analysis, association rules.
 
 ##### Resources
@@ -278,7 +278,7 @@ Cluster analysis, PCA, correspondence analysis, association rules.
 
 ***
 
-#### __*Wednesday, TBC: Text analysis [KB]*__
+#### __*Wednesday, 23 August: Text analysis [JB]*__
 Working with text in R, sentiment analysis, dictionary methods.
 
 ##### Resources
@@ -298,7 +298,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 
 ***
 
-#### __*Thursday, TBC: Topic modelling [JB]*__
+#### __*Thursday, 24 August: Topic modelling [JB]*__
 
 ##### Resources
 
@@ -322,7 +322,7 @@ Working with text in R, sentiment analysis, dictionary methods.
 
 ***
 
-#### __*Friday, TBC: Mining the Social Web [KB, JB]*__
+#### __*Friday, 25 August: Mining the Social Web [JB]*__
 Working with the Twitter API, Facebook API, JSON data, and examples.
 
 ##### Resources
@@ -355,9 +355,9 @@ Working with the Twitter API, Facebook API, JSON data, and examples.
 
 ### Assessment
 
-#### __Exam: Friday, TBC, Time: TBC, Room: TBC__
+#### __Exam: Friday, 25 August, Time: 14:00-16:00, Room: TBC__
 
 * __Instructions:__  Complete and submit the exam just as you would any lab assignment: by renaming the file, editing the R Markdown, knitting, and submitting through Moodle your knitted HTML file. Moodle page for the course is linked [here:](https://shortcourses.lse.ac.uk/course/view.php?id=158).
 * __Formatting:__  Put your own textual answers in boldface (using `**boldface type**` in RMarkdown), so that we can easily identify them when reviewing your HTML file.
-* __Deadline:__ Monday TBC 17:00 London time (GMT+1)
+* __Deadline:__ Monday 28 August 17:00 London time (GMT+1)
 
