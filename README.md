@@ -4,10 +4,11 @@
 #### LSE Methods Summer Programme 2017
 
 [Kenneth Benoit](kbenoit@lse.ac.uk), Department of Methodology, LSE  
-[Slava Mikhaylov](s.mikhaylov@ucl.ac.uk), Institute for Analytics and Data Science, University of Essex  
-[Jack Blumenau](J.Blumenau@lse.ac.uk), Department of Political Science, UCL  
+[Slava Mikhaylov](s.mikhaylov@essex.ac.uk), Institute for Analytics and Data Science, University of Essex  
+[Jack Blumenau](J.Blumenau@lse.ac.uk), Department of Political Science, UCL
+[Altaf Ali](altaf.ali.13@ucl.ac.uk), Department of Political Science, UCL
 
-This repository contains the class materials for the [LSE Methods Summer Programme](http://www.lse.ac.uk/study/summerSchools/Methods/home.aspx) course [*ME414 Introduction to Data Science and Big Data Analytics*](http://www.lse.ac.uk/study/summerSchools/Methods/Quantitative/ME414.aspx) taught in August 2017 by Kenneth Benoit, Slava Mikhaylov, and Jack Blumenau.  
+This repository contains the class materials for the [LSE Methods Summer Programme](http://www.lse.ac.uk/study/summerSchools/Methods/home.aspx) course [*ME414 Introduction to Data Science and Big Data Analytics*](http://www.lse.ac.uk/study/summerSchools/Methods/Quantitative/ME414.aspx) taught in August 2017 by Kenneth Benoit, Slava Mikhaylov, Jack Blumenau, and Altaf Ali.  
 
 
 ### Overview
@@ -127,6 +128,7 @@ You can read more about using GitHub with RStudio in Hadley Wickham's _R Package
 
 **Dr. Jack Blumenau** is a Lecturer in Quantitative Methods at the UCL Department of Political Science. he was previously an ESRC "Future Research Leader" post-doc in the Methodology Department at the LSE. His research explores the effects of legislative leaders on the behaviour of parliamentarians in the European Parliament and the UK House of Commons.
 
+**Altaf Ali** is a PhD student and Teaching Fellow in the Department of Political Science at University College London. His PhD thesis analyzes event data to model escalation patterns of armed intrastate conflicts. His research is focused on the application of machine learning methods to gain insights from data within the field of social sciences.
 
 
 ### Course Schedule
