@@ -9,6 +9,10 @@
 
 [Altaf Ali](altaf.ali.13@ucl.ac.uk), Department of Political Science, UCL
 
+=======
+[Altaf Ali](altaf.ali.13@ucl.ac.uk), Department of Political Science, UCL
+
+>>>>>>> 8e4f64639cb290c0ec4fcfd9fded08fe37ed9182
 This repository contains the class materials for the [LSE Methods Summer Programme](http://www.lse.ac.uk/study/summerSchools/Methods/home.aspx) course [*ME414 Introduction to Data Science and Big Data Analytics*](http://www.lse.ac.uk/study/summerSchools/Methods/Quantitative/ME414.aspx) taught in August 2017 by Kenneth Benoit, Slava Mikhaylov, Jack Blumenau, and Altaf Ali.  
 
 
