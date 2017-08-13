@@ -104,6 +104,8 @@ Each homework will be a single file in the [RMarkdown](http://rmarkdown.rstudio.
 
 We will walk you through this process in the Day 1 lab, so don't worry if it seems complicated the first time.  This sort of careful workflow process and file management is part of learning practical data science too!
 
+We do not mark the homework but we will walk through the solutions at the start of computer labs the following day.
+
 
 #### Instructions for use of course materials
 
