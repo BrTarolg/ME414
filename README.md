@@ -136,11 +136,12 @@ You can read more about using GitHub with RStudio in Hadley Wickham's _R Package
 
 ***
 
-#### __*Monday, 14 August: Overview and introduction to data science [KB, SM]*__
+#### __*Monday, 14 August: Overview and introduction to data science [SM,KB]*__
 We will use this session to get to know the range of interests and experience students bring to the class, as well as to survey the machine learning approaches to be covered. We will also discuss and demonstrate the R software.
 
 ##### Resources
-* [Lecture Notes](day1/ME414_day1.pdf)
+* [Lecture Notes Part 1](day1/ME414_day1.1.pdf)
+* [Lecture Notes Part 2](day1/ME414_day1.2.pdf)
 * [Assignment 1 as R markdown](day1/ME414_assignment1_LASTNAME_FIRSTNAME.Rmd)
 * Assignment 1 **solution** as [R markdown](day1/ME414_assignment1_solution.Rmd)
 
