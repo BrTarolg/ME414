@@ -18,25 +18,25 @@ Please submit your assignments via Moodle by 7pm on the day of the class. We wil
 
 This exercise relates to the `College` data set, which can be found in the file `College.csv` on the website for the main course textbook (James et al 2013) http://www-bcf.usc.edu/~gareth/ISL/data.html. It contains a number of variables for 777 different universities and colleges in the US.   
 
-The variables are  
-* `Private` : Public/private indicator
-* `Apps` : Number of applications received
-* `Accept` : Number of applicants accepted
-* `Enroll` : Number of new students enrolled
-* `Top10perc` : New students from top 10% of high school class 
-* `Top25perc` : New students from top 25% of high school class 
-* `F.Undergrad` : Number of full-time undergraduates
-* `P.Undergrad` : Number of part-time undergraduates
-* `Outstate` : Out-of-state tuition
-* `Room.Board` : Room and board costs
-* `Books` : Estimated book costs
-* `Personal` : Estimated personal spending
-* `PhD` : Percent of faculty with Ph.D.'s
-* `Terminal` : Percent of faculty with terminal degree
-* `S.F.Ratio` : Student/faculty ratio
-* `perc.alumni` : Percent of alumni who donate
-* `Expend` : Instructional expenditure per student
-* `Grad.Rate` : Graduation rate
+The variables are:    
+* `Private` : Public/private indicator  
+* `Apps` : Number of applications received  
+* `Accept` : Number of applicants accepted  
+* `Enroll` : Number of new students enrolled  
+* `Top10perc` : New students from top 10% of high school class   
+* `Top25perc` : New students from top 25% of high school class  
+* `F.Undergrad` : Number of full-time undergraduates  
+* `P.Undergrad` : Number of part-time undergraduates  
+* `Outstate` : Out-of-state tuition  
+* `Room.Board` : Room and board costs  
+* `Books` : Estimated book costs  
+* `Personal` : Estimated personal spending  
+* `PhD` : Percent of faculty with Ph.D.'s  
+* `Terminal` : Percent of faculty with terminal degree  
+* `S.F.Ratio` : Student/faculty ratio  
+* `perc.alumni` : Percent of alumni who donate  
+* `Expend` : Instructional expenditure per student  
+* `Grad.Rate` : Graduation rate  
 
 Before reading the data into R, it can be viewed in Excel or a text editor, if you find that convenient.
 
