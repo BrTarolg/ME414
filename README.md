@@ -175,6 +175,8 @@ Data types and formats, record cleaning, linkage, SQL, JSON, massive data proces
 * [Lecture Notes](day2/ME414_day2.pdf)
 * [Assignment 2 as R markdown](day2/ME414_assignment2_LASTNAME_FIRSTNAME.Rmd)
 * Assignment 2 **solution** as [R markdown](day2/ME414_assignment2_solution.Rmd)
+* [Altaf's resource on **dplyr** and the "tidyverse"](https://altaf-ali.github.io/tidydata_tutorial)
+* [Altaf's resource on **ggplot2**](https://altaf-ali.github.io/ggplot_tutorial)
 
 ##### Required reading:
 * Grolemund and Wickham, Chapters 4, 8-10.
