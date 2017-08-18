@@ -235,6 +235,7 @@ Cross-validation, bootstrap, ridge and lasso.
 * [Lecture Notes](day5/ME414_day5.pdf)
 * [Assignment 5 as R markdown](day5/ME414_assignment5_LASTNAME_FIRSTNAME.Rmd)
 * Assignment 5 **solution** as [R markdown](day5/ME414_assignment5_solution.Rmd)
+* [Dataverse replication example for PCR](http://dx.doi.org/10.7910/DVN/AER5QJ)
 
 ##### Required reading:
 * James et al., Chapter 5-6.
