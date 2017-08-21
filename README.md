@@ -251,6 +251,7 @@ GAMs, local regression, decision trees, random forest, boosting.
 ##### Resources
 
 * [Lecture Notes](day6/ME414_day6.pdf)
+* [RandomForest research example](day6/example_random_forest_Ukraine.pdf)
 * [Assignment 6 as R markdown](day6/ME414_assignment6_LASTNAME_FIRSTNAME.Rmd) 
 * Assignment 6 **solution** as [R markdown](day6/ME414_assignment6_solution.Rmd)
 
