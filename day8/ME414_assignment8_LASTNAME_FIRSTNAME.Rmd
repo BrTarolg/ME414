@@ -273,7 +273,7 @@ This exercise is designed to get you working with [quanteda](http://github.com/k
         posDfm[1:10,]
         ```
         
-        Weight the `posDfm` by term frequency using `dfm_weight()`, and plot the values of articles
+        Plot the dfm values of articles
         and conjunctions (actually, here just the coordinating conjunctions) across the speeches.
         (**Hint:** you can use `docvars(data_corpus_inaugural, "Year"))` for the *x*-axis.)
         
