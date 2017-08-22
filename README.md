@@ -271,10 +271,8 @@ Cluster analysis, PCA, correspondence analysis, association rules.
 ##### Resources
 
 * [Lecture Notes](day7/ME414_day7.pdf)
+* [Application example: smart meter analysis Notes](day7/application_example_clustering_rforest.pdf)
 * [Assignment 7 as R markdown](day7/ME414_assignment7_LASTNAME_FIRSTNAME.Rmd)
-* Association rule mining code example
-    + [R code](day7/apriori_example.R)
-    + [book dataset for example](https://github.com/WinVector/zmPDSwR/raw/master/Bookdata/bookdata.tsv.gz)
 * Assignment 7 **solution** as [R markdown](day7/ME414_assignment7_solution.Rmd)
 
 ##### Required reading:
