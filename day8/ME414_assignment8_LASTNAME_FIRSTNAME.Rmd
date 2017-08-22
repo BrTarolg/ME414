@@ -30,11 +30,11 @@ This exercise is designed to get you working with [quanteda](http://github.com/k
     
         The simplest way to create a corpus is to use a vector of texts already present in 
         R's global environment. Some text and corpus objects are built into the package,
-        for example `data_corpus_inaugural` is the UTF-8 encoded corpus of 58 presidential inaugural
+        for example `data_char_ukimmig2010` is the UTF-8 encoded set of 9 UK party manifesto sections from 2010, that deal with immigration policy.
         addresses.  Try using `corpus()` on this set of texts to create a corpus.  
       
         Once you have constructed this corpus, use the `summary()` method to see a brief
-        description of the corpus.  The names of the character vector `data_corpus_inaugural` should
+        description of the corpus.  The names of the corpus `data_char_ukimmig2010` should
         have become the document names.
       
     1.  From a directory of text files.
