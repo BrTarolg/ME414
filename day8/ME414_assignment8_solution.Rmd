@@ -18,7 +18,7 @@ This exercise is designed to get you working with [quanteda](http://github.com/k
     
     
 1.  Exploring **quanteda** functions.
-```{r, echo = F, message=FALSE}
+```{r, echo = FALSE, message=FALSE}
 library(tm)
 library(quanteda)
 library(quantedaData)
@@ -31,7 +31,7 @@ library(readtext)
     you should also browse the documentation, especially `?corpus` to see the structure
     and operations of how to construct a corpus.  The website http://quanteda.io has extensive     documentation.
 
-    ```{r, eval = F}
+    ```{r, eval = FALSE}
     ?corpus
     example(dfm)
     example(corpus)
@@ -93,7 +93,7 @@ library(readtext)
 
     Try substituting your own search terms, or working with your own corpus.
 
-    ```{r, eval = F}
+    ```{r, eval = FALSE}
     kwic(data_corpus_inaugural, "terror", 3)
 
     kwic(data_corpus_inaugural, "america", 3)
@@ -190,7 +190,7 @@ library(readtext)
         Try tokenizing the sentences from `data_char_sampletext` into sentences, using
         `tokens(x, what = "sentence")`. 
 
-        ```{r, eval = F}
+        ```{r, eval = FALSE}
         tokens(sample_text_lowercase)
         tokens(sample_text_lowercase, remove_hyphens = TRUE)
         tokens(sample_text_lowercase, remove_numbers = TRUE, remove_punct = TRUE, remove_symbols = TRUE)
@@ -205,7 +205,7 @@ library(readtext)
         Stemming removes the suffixes using the Porter stemmer, found in the
         **SnowballC** library.  The **quanteda** function* to invoke the stemmer end with  `*_wordstem`.  Apply stemming to the `data_char_sampletext` (using `char_wordstem()`) and examine the results.  Why does it not appear to work, and what do you need to do to make it work?  How would you apply this to the sentence-segmented vector?
 
-        ```{r, eval = F}
+        ```{r, eval = FALSE}
         char_wordstem(tokens(data_char_sampletext)[[1]])
 
         tokens_wordstem(tokens(data_char_sampletext))[[1]]
