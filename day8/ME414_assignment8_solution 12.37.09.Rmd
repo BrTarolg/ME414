@@ -11,19 +11,25 @@ This exercise is designed to get you working with [quanteda](http://github.com/k
 
 1.  Getting Started.
 
-    You will first need to install the package: 
+    You will first need to install the packages: 
     ```{r, eval=FALSE}
     install.packages("quanteda")
     ```
     
+    You will also need to install the package `quantedaData` from github using the `install_github` function from the `devtools` package: 
+    ```{r, eval=FALSE}
+    devtools::install_github('kbenoit/quantedaData')
+    ```
+    
     
 1.  Exploring **quanteda** functions.
-```{r, echo = FALSE, message=FALSE}
-library(tm)
-library(quanteda)
-library(quantedaData)
-library(readtext)
-```
+    
+    ```{r, echo = T, message=FALSE}
+    library(tm)
+    library(quanteda)
+    library(quantedaData)
+    library(readtext)
+    ```
 
     Look at the Quick Start vignette, and browse the manual for quanteda.  You can use
     `example()` function for any 
@@ -31,7 +37,7 @@ library(readtext)
     you should also browse the documentation, especially `?corpus` to see the structure
     and operations of how to construct a corpus.  The website http://quanteda.io has extensive     documentation.
 
-    ```{r, eval = FALSE}
+    ```{r, eval = F}
     ?corpus
     example(dfm)
     example(corpus)
@@ -93,12 +99,11 @@ library(readtext)
 
     Try substituting your own search terms, or working with your own corpus.
 
-    ```{r, eval = FALSE}
-    kwic(data_corpus_inaugural, "terror", 3)
+    ```{r, eval = T}
 
-    kwic(data_corpus_inaugural, "america", 3)
+    head(kwic(data_corpus_inaugural, "america", 3))
 
-    kwic(data_corpus_inaugural, "democracy", 3)
+    head(kwic(data_corpus_inaugural, "democracy", 3))
     ```
 
 
@@ -115,7 +120,7 @@ library(readtext)
     allows you to reduce the size of the dfm following its construction.
     
     ```{r}
-    dim(dfm(data_corpus_inaugural, stem = TRUE))
+    dim(dfm(data_corpus_inaugural, stem = T))
     dim(dfm_trim(mydfm, min_count = 5, min_docfreq = 0.01))
     ```
    
@@ -134,7 +139,7 @@ library(readtext)
     creating a dfm.
 
     ```{r}
-    mydfm <- dfm(data_corpus_inaugural, remove = stopwords("english"), remove_punct = TRUE, stem = TRUE)
+    mydfm <- dfm(data_corpus_inaugural, remove = stopwords("english"), remove_punct = T, stem = T)
     topfeatures(mydfm, 20)
 
     irish_dfm <- dfm(data_corpus_irishbudget2010, groups = "party")
@@ -156,8 +161,8 @@ library(readtext)
     Try producing that plot without the stopwords.  See `dfm_remove()` to remove stopwords from the dfm object directly, or supply
     the `remove` argument to `dfm()`.
 
-    ```{r fig.height = 8}
-    obamadfm <- dfm(corpus_subset(data_corpus_inaugural, President=="Obama"), remove = stopwords("SMART"), remove_punct = TRUE)
+    ```{r}
+    obamadfm <- dfm(corpus_subset(data_corpus_inaugural, President=="Obama"), remove = stopwords("SMART"), remove_punct = T)
     textplot_wordcloud(obamadfm)
     ```
 
@@ -173,7 +178,7 @@ library(readtext)
         **quantedaData** using `data(data_char_sampletext)`. Can you think of cases 
         where cleaning could introduce homonymy?
 
-        ```{r, eval = TRUE}
+        ```{r, eval = T}
         sample_text_lowercase <- char_tolower(data_char_sampletext)
         ```
 
@@ -190,13 +195,13 @@ library(readtext)
         Try tokenizing the sentences from `data_char_sampletext` into sentences, using
         `tokens(x, what = "sentence")`. 
 
-        ```{r, eval = FALSE}
+        ```{r, eval = F}
         tokens(sample_text_lowercase)
-        tokens(sample_text_lowercase, remove_hyphens = TRUE)
-        tokens(sample_text_lowercase, remove_numbers = TRUE, remove_punct = TRUE, remove_symbols = TRUE)
+        tokens(sample_text_lowercase, remove_hyphens = T)
+        tokens(sample_text_lowercase, remove_numbers = T, remove_punct = T, remove_symbols = T)
         ```
         
-        ```{r, eval = TRUE}
+        ```{r, eval = T}
         tokens(sample_text_lowercase, what = "sentence")
         ```
         
@@ -205,10 +210,30 @@ library(readtext)
         Stemming removes the suffixes using the Porter stemmer, found in the
         **SnowballC** library.  The **quanteda** function* to invoke the stemmer end with  `*_wordstem`.  Apply stemming to the `data_char_sampletext` (using `char_wordstem()`) and examine the results.  Why does it not appear to work, and what do you need to do to make it work?  How would you apply this to the sentence-segmented vector?
 
-        ```{r, eval = FALSE}
-        char_wordstem(tokens(data_char_sampletext)[[1]])
+        ```{r, eval = T}
+        
+        # Word-segmented vector
+        sample_word_stems <- char_wordstem(tokens(data_char_sampletext)[[1]])
+        sample_word_stems[1:10]
+        
+        ```
 
-        tokens_wordstem(tokens(data_char_sampletext))[[1]]
+        ```{r, eval = T}
+        # Sentence-segmented vector
+        
+        sentence_boundaries <- c(0, which(sample_word_stems == "."))
+        
+        sample_sentence_word_stems <- list()
+        
+        for(i in 1:(length(sentence_boundaries)-1)) {
+        
+        sample_sentence_word_stems[[i]] <- paste0(sample_word_stems[(sentence_boundaries[i] + 1):(sentence_boundaries[i+1])], collapse = " ")
+        
+        }
+        
+        sample_sentence_word_stems[1:3]
+        
+        
         ```
 
 
@@ -305,7 +330,7 @@ library(readtext)
         speeches corpus.
 
         ```{r}
-        irish_dfm <- dfm(data_corpus_irishbudget2010, remove_punct = TRUE)
+        irish_dfm <- dfm(data_corpus_irishbudget2010, remove_punct = T)
         ```
 
     1.  Examine the most frequent word features using `textstat_frequency()`.  What are
@@ -372,13 +397,13 @@ library(readtext)
         
         ```{r}
         data_corpus_inaugural_subset <- corpus_subset(data_corpus_inaugural, Year %in% c(1900:1950))
-        inaugural_dfm <- dfm(data_corpus_inaugural_subset, remove_punct = TRUE)
+        inaugural_dfm <- dfm(data_corpus_inaugural_subset, remove_punct = T)
 
         word_similarities <- textstat_simil(inaugural_dfm, selection = c("economy", "health", "women"), margin = "features")
 
-        head(word_similarities[order(word_similarities[,1],decreasing = TRUE),])
-        head(word_similarities[order(word_similarities[,2],decreasing = TRUE),])
-        head(word_similarities[order(word_similarities[,3],decreasing = TRUE),])
+        head(word_similarities[order(word_similarities[,1],decreasing = T),])
+        head(word_similarities[order(word_similarities[,2],decreasing = T),])
+        head(word_similarities[order(word_similarities[,3],decreasing = T),])
 
         ```
 
