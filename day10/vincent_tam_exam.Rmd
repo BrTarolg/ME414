@@ -1,0 +1,280 @@
+---
+title: "ME114 2017 Exam"
+author: "Ken Benoit, Slava Mikhaylov, and Jack Blumenau"
+output: html_document
+---
+
+**INSTRUCTIONS:** Answer **four** of the **five** questions.  If you answer five, we will base your grade on the best four of five.  Each of your four best questions is weighted equally in the determination of your overall grade.
+
+
+### Question 1
+
+Using the `Boston` dataset (`MASS` package), predict the per capita crime rate using the other variables in this data set.  In other words, per capita crime rate is the response, and the other variables are the predictors.
+
+```{r}
+library(MASS)
+data(Boston, package = 'MASS')
+head(Boston)
+```
+
+
+(a) For each predictor, fit a simple (single-variable) linear regression model to predict the response.  In which of the models is there a statistically significant association between the predictor and the response? 
+
+```{r}
+boslms <- lapply(Boston[, -1], function(x) lm(crim ~ x, data = Boston))
+coefvect <- rep(0,13)
+for(i in 1:13){
+  foo = summary(boslms[[i]])
+  coefvect[i] = foo$coefficients[2,4]
+}
+names(coefvect) <- colnames(Boston[,-1])
+barplot(coefvect, las = 2)
+
+#lets investigate the Charles river dummy variable!
+foo <- lm(crim~chas, data = Boston)
+summary(foo)
+#looks like chas is not statistically significant at all! (as we would expect)
+barplot(coefvect[-3], las = 2)
+coefvect
+```
+
+**As we can see from our results, all of the variables are statisically significant in a single-variable linear regression model, except for the charles river dummy variable!**
+
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_0 : \beta_j = 0$?
+
+```{r}
+bosmlr <- glm(crim~., data = Boston)
+summary(bosmlr)
+```
+
+**It looks like we can reject the null hypothesis for low p-values
+In this case, variables zn, nox, dis, rad, black, lstat and medv all have low p-values and are statistically significant, although nox(nitrogen oxides concentration) and lstat(lower status of population) are less significant - depending on conventions on how we choose statistical significance (often P< 1% or 5%) we may consider these variables with higher p-values statistically insignificant**
+
+
+(c) How do your results from (a) compare to your results from (b)? Create a plot displaying the univariate regression coefficients from (a) on the $x$-axis, and the multiple regression coefficients from (b) on the $y$-axis. That is, each predictor is displayed as a single point in the plot. Its coefficient in a simple linear regression model is shown on the $x$-axis, and its coefficient estimate in the multiple linear regression model is shown on the $y$-axis.  Hint: To get the coefficients from a fitted regression model, you can use `coef()`.  Note that you are not interested in the intercept.
+```{r}
+#creating a univariate regression coefficient vector
+bosum <- summary(bosmlr)
+univect <- rep(0,13)
+for(i in 1:13){
+  foo = summary(boslms[[i]])
+  univect[i] = foo$coefficients[2,1]
+}
+names(univect) <- colnames(Boston[,-1])
+
+#with the nox variable
+plot(univect,coef(bosmlr)[-1], main = "Coefficients of single vs multi variable Linear regression", xlab = "Single variable coefficients", ylab = "Multi variable coefficients")
+
+#for clarity, lets try removing the nox variable!
+plot(univect[-4],coef(bosmlr)[c(-1,-5)], main = "Coefficients of single vs multi variable Linear regression", xlab = "Single variable coefficients", ylab = "Multi variable coefficients")
+```
+
+**in a) we saw all variables except for chas were significant, however in b) we see that variables indus, rm, age, tax and ptratio lose their significance. This means that these variables are likely correlated with other variables and that if we hold all other variables constant, changing these variables does not effect the crime statistic
+**
+
+
+### Question 2
+
+Using the `Boston` data set, fit classification models in order to predict whether a given suburb has a crime rate above or below the median.  Produce a confusion matrix for, and describe the findings from your model, for each of:
+
+a.  logistic regression
+
+```{r}
+#first we must find the median, and then add a column depending on whether it is above or below the median
+summary(Boston)
+#median = 0.25651
+dim(Boston)
+#506 observations
+crim01 <- rep(0, nrow(Boston))
+crim01[Boston$crim>median(Boston$crim)] <- 1
+Boston2 <- data.frame(Boston, crim01)
+Boston2 <- data.frame(Boston2[-1])
+
+#logistic regression
+bos.lr <- glm(crim01~., data = Boston2, family = binomial)
+summary(bos.lr)
+lr.probs <- predict(bos.lr, Boston2, type = "response")
+lr.pred <- rep("Below",506)
+lr.pred[lr.probs>0.5] <- "Above"
+table(lr.pred,Boston2$crim01)
+```
+
+**Our Logistic regression model shows that the variables with the most statistical significance are zn, nox, age, dis, rad, tax, ptratio, black and medv on predicting whether the observation has a higher or lower crime rate than the median. 
+Our model seems very accurate on the test data, with a (229+234)/(506) = 91.5% accuracy**
+
+b.  kNN
+```{r}
+library(class)
+train.crim01 <- Boston2$crim01
+knn.pred1 <-  knn(Boston2[,-14], Boston2[,-14], train.crim01, k = 1)
+table(knn.pred1, Boston2$crim01)
+mean(knn.pred1 == Boston2$crim01)
+
+knn.pred2 <-  knn(Boston2[,-14], Boston2[,-14], train.crim01, k = 5)
+table(knn.pred2, Boston2$crim01)
+mean(knn.pred2 == Boston2$crim01)
+
+knn.pred3 <-  knn(Boston2[,-14], Boston2[,-14], train.crim01, k = 10)
+table(knn.pred3, Boston2$crim01)
+mean(knn.pred3 == Boston2$crim01)
+
+```
+
+**Just to check, we try KNN with different values of K. Since we do not have a test set of data, and the question asks us to check the performance of the model on the training data itself, we can see that we get different values and confusion matrices depending on our value of K. Lower values of K will be more biased and more likely to overfit the training data. In this case, k=1 is most likely an overfit of the data, despite having 100% accuracy
+That being said, with k=5 and k=10 we still end up with good models, both with over 90% accuracy in prediction
+**
+
+
+c.  (**bonus**) Naive Bayes predictors of your outcome.  (Use the **e1071** package for this.)
+```{r}
+library(e1071)
+bayes <- naiveBayes(crim01~., data = Boston2)
+bayes.pred <- predict(bayes, newdata = Boston2[,-14], type = "raw")
+bayes.res <- rep(0,506)
+head(bayes.pred)
+for(i in 1:506){
+  bayes.res[i] <- ifelse(bayes.pred[i,1]<bayes.pred[i,2],1,0)
+}
+table(bayes.res,Boston2$crim01)
+mean(bayes.res==Boston2$crim01)
+```
+
+
+
+**Note:** You do not have to split the data into test and training sets here.  Just predict on the training sample, which consists of the entire dataset.
+
+### Question 3
+
+(a) Give the standard error of the median for the `crim` variable from `data(Boston, package = "MASS")`.
+
+```{r}
+summary(Boston$crim)
+std <- function(x) sd(x)/sqrt(length(x))
+std(Boston$crim)
+#0.3823853 is standard error of the mean
+#to get an *Estimate* of the median standard error, we multiply by 1.2533
+std(Boston$crim)*1.2533
+```
+**Our estimated standard error of the median is 0.4792. We obtain this result if we assume that the sample is large enough and is normally distributed. Read: http://davidmlane.com/hyperstat/A106993.html **
+**Alternatively, we can boostrap, as shown below**
+```{r}
+library(boot)
+
+med.fn <- function(data,index){
+  foo <- Boston$crim[index]
+  return (median(foo))
+}
+
+boot(Boston, med.fn, R=1000)
+```
+
+**With our bootstrap, we get a std error of 0.038, which is slightly different from our estimate - we would note that crime and incidences of it may not be normally distributed!**
+
+(b) Estimate a bootstrapped standard error for the coefficient of `medv` in a logistic regression model of the above/below median of crime binary variable from question 2, with `medv`, `indus`, `age`, `black`, and `ptratio` as predictors.  Compare this to the asymptotic standard error from the maximum likelihood estimation (reported by `summary.glm()`).
+
+```{r}
+medv.lr <- glm(crim01~medv+indus+age+black+ptratio, data=Boston2, family=binomial)
+coef(summary(medv.lr))
+
+boot.fn <- function (data,index){
+  d <- data[index, ]
+  return(coef(summary(glm(crim01~medv+indus+age+black+ptratio ,data=d, family = binomial)))[2,1])
+}
+set.seed(12345)
+log.boot <- boot(Boston2 ,boot.fn ,R=1000)
+log.boot
+```
+
+
+**Our bootstrap shows that the standard error for the medv variable in the model is 0.0174, which is slightly less than the 0.01948 shown in our summary.glm(). This may suggest that the bootstrap is able to make a better estimation for the coefficient than the regular maximum likelihood estimation.**
+
+### Question 4
+
+Using `quanteda`, construct an English language dictionary for "populism" for English, using the word patterns found in Appendix B of [Rooduijn, Matthijs, and Teun Pauwels. 2011. "Measuring Populism: Comparing Two Methods of Content Analysis."  *West European Politics* 34(6): 1272–83.](Exam/Populism_2011.pdf)
+
+Use this dictionary to measure the relative amount of populism, as a total of all words in, the `data_corpus_irishbudget2010` when these are grouped by political party.  Hint: You will need to make two dfm objects, one for all words, and one for the dictionary, and get a proportion.  Plot the proportions by party using a dotchart.
+
+```{r}
+library(quanteda)
+popDic <- dictionary(list(foooo = c("eli",
+                                   "consensus",
+                                   "undemocratic",
+                                   "referend",
+                                   "corrupt",
+                                   "propaganda",
+                                   "politici",
+                                   "deceit",
+                                   "deceiv",
+                                   "betray",
+                                   "shame",
+                                   "scandal",
+                                   "truth",
+                                   "dishonest",
+                                   "establishm",
+                                   "ruling"
+                                            )))
+
+mycorpus <- corpus(data_corpus_irishbudget2010)
+
+mydfm <- dfm(mycorpus, dictionary = popDic, groups = "party")
+mydfm2 <- dfm(mycorpus, groups = "party")
+
+tokens1 <- ntoken(mydfm)
+tokens2 <- ntoken(mydfm2)
+
+perc <- tokens1/tokens2
+
+dotchart(sort(perc), ylab = "Party", xlab ="Percentage", main = "%age of populism words per party")
+  
+```
+
+### Question 5
+
+Here we will use kmeans clustering to see if we can produce groupings by party of the 1984 US House of Representatives, based on their voting records from 16 votes.  This data is the object `HouseVotes84` from the `mlbench` package.  Since this is stored as a list of factors, use the following code to transform it into a method that will work with the `kmeans()` function.
+```{r}
+data(HouseVotes84, package = "mlbench") 
+HouseVotes84num <- as.data.frame(lapply(HouseVotes84[, -1], unclass))
+HouseVotes84num[is.na(HouseVotes84num)] <- 0
+set.seed(2)  # make sure you do this before step b below
+```
+
+a.  What does each line of that code snippet do, and why was this operation needed?  What is the `-1` indexing for?
+
+**The first line loads the data into R, from the package "mlbench"
+The second line performs the "unclass" function which removes the effect of a class, to every single column of HouseVotes84, and then excludes the first column. In this particular case, it turns the "y"'s into 2's and the "x"'s into 1's, as in this case the unclass function turns a factor variable into a number variable. It then turns this into a dataframe which we call HouseVotes84num, which is a data frame of our 1's and 2's excluding the class column of republican/democrat
+The third line turns all "NA" values into 0's in our dataframe
+The last line sets the random seed so that our results are reproducible**
+
+b.  Perform a kmeans clustering on the votes only data, for 2 classes, after setting the seed to 2 as per above.  Construct a table comparing the actual membership of the Congressperson's party (you will find this as one of the variables in the `HouseVotes84` data) to the cluster assigned by the kmeans procedure.  Report the 
+    i.   accuracy  
+    ii.  precision  
+    iii.  recall  
+    
+```{r}
+km.out <- kmeans(HouseVotes84num, 2, nstart = 1)
+table(km.out$cluster, HouseVotes84$Class)
+```
+
+**Reminder on accuracy, precision and recall.
+First, we must assign our true positives, true negative, false positive and false negative.
+Here, we consider that our model is testing for a democrat, meaning that true positive = 220, true negative = 158, false positive = 10, false negative = 47
+Accuracy = 220+158/(435) = 0.869%
+Precision = 220/(220+10) = 0.957%
+Recall = 220/(220+47) = 0.823%**
+
+**If we were to consider testing for a republican as being positive, our accuracy would be the same, but
+Precision = 158/(158+47) = 0.7707%
+Recall = 158/(158+10) = 0.940%**
+
+c.  Repeat b twice more to produce three more confusion matrix tables, comparing the results.  Are they the same?  If not, why not?
+
+```{r}
+for(i in 1:3){
+set.seed(i)
+km.outrep <- kmeans(HouseVotes84num, 2, nstart = 1)
+print(table(km.outrep$cluster, HouseVotes84$Class))
+}
+```
+
+**As we can see, as far as classification goes, the results are the same! This is telling us that the seperation in our data is quite high, and it is not difficult for the model to find our distinct clusters. This is even when we use nstart = 1, which is a number that repeats the model several times and then chooses the best model using a minimisation criteria. 
+The only thing that does change is the swapping of clusters 1 and 2 being either democrat or republican. The reason this happens is because k-means clustering starts from a random point and thus the seeds for each cluster is random, meaning that sometimes republican or democrat will be assigned either 1 or 2**
